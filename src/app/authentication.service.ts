@@ -40,8 +40,14 @@ export class AuthenticationService {
         });
       if (response) {
         let userLog={
-        idUser: response.userId
+        idUser: response.idUser,
+        email: response.email,
+        firstName: response.firstName,
+        lastName:response.lastName,
+        creationDate: response.creationDate
         }
+        localStorage.setItem('currentUser', JSON.stringify(userLog));
+        localStorage.setItem("isLoggedIn", "true");
         this.isLoggedIn=true;
         return this.isLoggedIn
       }

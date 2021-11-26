@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { routes } from './routes';
+import { HomeService } from './users/home.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { routes } from './routes';
   ],
   exports: [RouterModule],
 
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

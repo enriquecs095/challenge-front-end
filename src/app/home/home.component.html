@@ -9,11 +9,13 @@
   <body>
     <div class="container">
         <div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+            <label for="comment">What are you thinking geek:</label>
+            <textarea class="form-control" rows="5" maxlength="99" id="comment" #comment></textarea>
           </div>
-
-        <ul class="list-group">
+          <button type="button" class="btn btn-primary" (click)="Send()">Send</button>
+          <br><br/>
+          <br><br/>
+        <ul class="list-group" >
             <li class="list-group-item">First item</li>
             <li class="list-group-item">Second item</li>
             <li class="list-group-item">Third item</li>
