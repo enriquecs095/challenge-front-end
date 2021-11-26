@@ -18,7 +18,7 @@ export class AuthenticationService {
 
 
   constructor(private http: HttpClient) {
-
+        
   }
 
   async login(user, password) {
@@ -39,10 +39,8 @@ export class AuthenticationService {
           this.errorMessage('La credenciales no concuerdan con los registros existentes');
         });
       if (response) {
-
         let userLog={
         idUser: response.userId
-
         }
         this.isLoggedIn=true;
         return this.isLoggedIn
@@ -57,7 +55,7 @@ export class AuthenticationService {
 
 
   }
-  
+
 
   succesMessage(message) {
     Swal.fire({

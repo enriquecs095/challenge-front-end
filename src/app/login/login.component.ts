@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     }
     await this.auth.login(this.f.idUser.value, this.f.password.value).then(async (resp)=>{
       if (resp) {
-        this.router.navigate(['login']);
+        this.router.navigate(['home']);
       } else {
         Swal.fire(
           'Error',
