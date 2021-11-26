@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthenticationService } from '../authentication.service';
 import { User } from '../users/interfaces/user';
 
 
@@ -19,8 +20,8 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router
-            ) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router,
+               private auth: AuthenticationService ) {
   }
 
   ngOnInit(): void {
@@ -39,18 +40,17 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
-    }/*
-    await this.auth.login(this.f.user.value, this.f.password.value).then(async (resp)=>{
+    }
+    await this.auth.login(this.f.idUser.value, this.f.password.value).then(async (resp)=>{
       if (resp) {
-        await this.userService.loadPrivilegesUser();
-        this.router.navigate(['home']);
+        this.router.navigate(['login']);
       } else {
         Swal.fire(
           'Error',
           'La credenciales no concuerdan con los registros existentes'
         );
       }
-    });*/
+    });
 
   }
 
