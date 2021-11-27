@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { routes } from './routes';
+import { SignupComponent } from './singup/signup.component';
 import { HomeService } from './users/home.service';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomeService } from './users/home.service';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   
   imports: [

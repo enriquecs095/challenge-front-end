@@ -55,6 +55,41 @@ export class AuthenticationService {
   }
 
 
+  async createUser(user,email, password) {
+
+    let body=<User>{
+      idUser:user,
+      email: email,
+      password:password
+    }
+    let response:any;
+      await this.http.post(`${WEB_SERVICE}Login/CreateUser`,body)
+        .toPromise()
+        .then( res => {
+          if (res) 
+             this.succesMessage('Welcome');
+              response = res;
+        })
+        .catch( (err) => {
+          this.errorMessage('User already exist');
+        });
+      if (response) {
+        let userLog={
+        idUser: response.idUser,
+        email: response.email,
+        firstName: response.firstName,
+        lastName:response.lastName,
+        creationDate: response.creationDate
+        }
+        localStorage.setItem('currentUser', JSON.stringify(userLog));
+        localStorage.setItem("isLoggedIn", "true");
+        this.isLoggedIn=true;
+        return this.isLoggedIn
+      }
+      return false;
+  }
+
+
 
   logout(){
 

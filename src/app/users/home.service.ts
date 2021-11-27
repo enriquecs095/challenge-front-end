@@ -27,14 +27,33 @@ export class HomeService {
         .toPromise()
         .then( res => {
           if (res) 
-             this.succesMessage('Enviado');
+             this.succesMessage('Send');
               response = res;
         })
         .catch( (err) => {
-          this.errorMessage('Error al enviar');
+          this.errorMessage('Error sending');
         });
       if (response) {
         return true
+      }
+      return false;
+  }
+
+  async LoadComents() {
+    let userLog= JSON.parse(localStorage.getItem("currentUser"));
+    let response:any;
+      await this.http.get(`${WEB_SERVICE}Timeline/GetTimeline?user=${userLog.idUser}`)
+        .toPromise()
+        .then( res => {
+          if (res) 
+              response = res;
+              console.log(res);
+        })
+        .catch( (err) => {
+          this.errorMessage('Error loading timeline');
+        });
+      if (response) {
+        return response;
       }
       return false;
   }

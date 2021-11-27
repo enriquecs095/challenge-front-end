@@ -14,16 +14,28 @@ import { HomeService } from '../users/home.service';
 
 export class HomeComponent implements OnInit {
     
-    ngOnInit(): void {
-       
+  listComments:[]
+    ngOnInit() {
+      this.LoadComments();      
     }
 
-    constructor(private homeService: HomeService){
-
-    }
+    constructor(private homeService: HomeService){}
 
     @ViewChild("comment") comment: ElementRef;
 
+async LoadComments(){
+  await this.homeService.LoadComents().then(async (resp)=>{
+    if (resp) {
+      this.listComments=resp;
+    } else {
+      Swal.fire(
+        'Error',
+        "Couldn't load the timeline"
+      );
+    }
+  });
+
+}
   
   async Send() {
    let commentUser=this.comment.nativeElement.value;
@@ -33,7 +45,7 @@ export class HomeComponent implements OnInit {
       } else {
         Swal.fire(
           'Error',
-          'No se pudo enviar'
+          "Could't send the data"
         );
       }
     });

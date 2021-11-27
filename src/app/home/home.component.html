@@ -15,11 +15,12 @@
           <button type="button" class="btn btn-primary" (click)="Send()">Send</button>
           <br><br/>
           <br><br/>
-        <ul class="list-group" >
-            <li class="list-group-item">First item</li>
-            <li class="list-group-item">Second item</li>
-            <li class="list-group-item">Third item</li>
+          <div *ngFor="let list of listComments">
+            <ul class="list-group" >
+              <li class="list-group-item">{{list.comment}}</li> <li class="list-group-item">{{list.creationDate}}</li>
           </ul>
+          </div>
+       
     </div>
     <br><br/>
     <br><br/>
