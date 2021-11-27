@@ -55,12 +55,16 @@ export class AuthenticationService {
   }
 
 
-  async createUser(user,email, password) {
+  async createUser(user,firstname,lastname,email,password) {
 
     let body=<User>{
       idUser:user,
       email: email,
+      fisrtName: firstname,
+      lastName: lastname,
+      thought: "Hi",
       password:password
+
     }
     let response:any;
       await this.http.post(`${WEB_SERVICE}Login/CreateUser`,body)

@@ -44,9 +44,10 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
-    await this.auth.createUser(this.f.idUser.value, this.f.email.value,this.f.password.value).then(async (resp)=>{
+    await this.auth.createUser(this.f.idUser.value,this.f.firstName.value,this.f.lastName.value, this.f.email.value,this.f.password.value).then(async (resp)=>{
       if (resp) {
         this.router.navigate(['login']);
+        
       } else {
         Swal.fire(
           'Error',
