@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
     }
     await this.auth.createUser(this.f.idUser.value, this.f.email.value,this.f.password.value).then(async (resp)=>{
       if (resp) {
-        this.router.navigate(['home']);
+        this.router.navigate(['login']);
       } else {
         Swal.fire(
           'Error',

@@ -22,24 +22,21 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <h2 class="nav-link" href="#">twitter clone</h2>
+            <h2 class="nav-link" [routerLink]="['/login']" >twitter clone</h2>
           </li>
         </ul>
         <!-- Left links -->
   
         <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-link px-3 me-2" click="/login">
+          <button *ngIf="!this.auth.isLoggedIn" type="button" class="btn btn-link px-3 me-2" [routerLink]="['/login']">
             Login
           </button>
-          <button type="button" class="btn btn-primary me-3">
+          <button  *ngIf="!this.auth.isLoggedIn"  type="button" class="btn btn-primary me-3" [routerLink]="['/signup']">
             Sign up for free
           </button>
-          <a
-            class="btn btn-dark px-3"
-            href="https://github.com/mdbootstrap/mdb-ui-kit"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
+          <button type="button" *ngIf="this.auth.isLoggedIn"  class="btn btn-link px-3 me-2" (click)="logout()">
+            Log out
+          </button>
         </div>
       </div>
       <!-- Collapsible wrapper -->
